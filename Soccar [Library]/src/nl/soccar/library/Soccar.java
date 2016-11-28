@@ -13,8 +13,6 @@ public class Soccar {
 
     private Player currentPlayer;
 
-    private SessionController sessionController;
-
     private Soccar() {
         /**
          * Constructor is intentionally set private, so that this Singleton
@@ -32,15 +30,6 @@ public class Soccar {
     }
 
     /**
-     * Gets the SessionController.
-     *
-     * @return The SessionController, not null.
-     */
-    public SessionController getSessionController() {
-        return sessionController;
-    }
-
-    /**
      * Sets the instance of the Singleton Soccar class. The SessionController is
      * created and the Player is set based on the Player that is passed as an
      * argument.
@@ -49,7 +38,6 @@ public class Soccar {
      */
     public static void setInstance(Player player) {
         instance = new Soccar();
-        instance.sessionController = new SessionController();
         instance.currentPlayer = player;
     }
 

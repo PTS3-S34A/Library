@@ -3,7 +3,6 @@ package nl.soccar.library;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +22,8 @@ public class SessionController {
 
     private static final Logger LOGGER = Logger.getLogger(SessionController.class.getSimpleName());
     private static final Random RANDOM = new Random();
+    private static final SessionController instance = new SessionController();
 
-    private Session currentSession;
     private final List<Session> sessions;
 
     /**
@@ -32,7 +31,7 @@ public class SessionController {
      * initializes all sessions, by default there are no sessions until
      * retrieved from the network.
      */
-    public SessionController() {
+    private SessionController() {
         sessions = new ArrayList<>();
     }
 
@@ -104,7 +103,7 @@ public class SessionController {
         } else {
             teamRed.join(player);
         }
-        
+
         return session;
     }
 
@@ -122,7 +121,7 @@ public class SessionController {
         room.getTeamBlue().leave(player);
         room.getTeamRed().leave(player);
 
-        Soccar.getInstance().getSessionController().setCurrentSession(null);
+        player.setCurrentSession(null);
     }
 
     /**
@@ -135,25 +134,12 @@ public class SessionController {
     }
 
     /**
-     * Gets the Session that is currently joined by the Player that launched the
-     * application.
+     * Gets the SessionController instnace.
      *
-     * @return The Session, may be null to indicate that there's no current
-     * Session., that is currently joined.
+     * @return The SessionController, not null.
      */
-    public Session getCurrentSession() {
-        return currentSession;
-    }
-
-    /**
-     * Sets the current Session that is joined by the player that launched the
-     * application.
-     *
-     * @param session The current session, may be null to indicate there's no
-     * joined Session, the current player is in.
-     */
-    public void setCurrentSession(Session session) {
-        currentSession = session;
+    public static SessionController getInstance() {
+        return instance;
     }
 
 }
