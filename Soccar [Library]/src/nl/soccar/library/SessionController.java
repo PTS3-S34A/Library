@@ -24,7 +24,7 @@ public class SessionController {
     private static final Logger LOGGER = Logger.getLogger(SessionController.class.getSimpleName());
     private static final Random RANDOM = new Random();
 
-    private Optional<Session> currentSession;
+    private Session currentSession;
     private final List<Session> sessions;
 
     /**
@@ -33,7 +33,6 @@ public class SessionController {
      * retrieved from the network.
      */
     public SessionController() {
-        currentSession = Optional.empty();
         sessions = new ArrayList<>();
     }
 
@@ -142,7 +141,7 @@ public class SessionController {
      * @return The Session, may be null to indicate that there's no current
      * Session., that is currently joined.
      */
-    public Optional<Session> getCurrentSession() {
+    public Session getCurrentSession() {
         return currentSession;
     }
 
@@ -154,7 +153,7 @@ public class SessionController {
      * joined Session, the current player is in.
      */
     public void setCurrentSession(Session session) {
-        currentSession = Optional.ofNullable(session);
+        currentSession = session;
     }
 
 }
