@@ -16,6 +16,8 @@ public class Player {
     private final CarType carType;
     private Statistics statistics;
 
+    private Session currentSession;
+
     /**
      * Constructor used for instantiation of a Player object.
      *
@@ -76,6 +78,28 @@ public class Player {
      */
     public void setStatistics(Statistics statistics) {
         this.statistics = statistics;
+    }
+
+    /**
+     * Gets the Session that is currently joined by the Player that launched the
+     * application.
+     *
+     * @return The Session, may be null to indicate that there's no current
+     * Session., that is currently joined.
+     */
+    public Session getCurrentSession() {
+        return currentSession;
+    }
+
+    /**
+     * Sets the current Session that is joined by the player that launched the
+     * application.
+     *
+     * @param currentSession The current session, may be null to indicate
+     * there's no joined Session, the current player is in.
+     */
+    public void setCurrentSession(Session currentSession) {
+        this.currentSession = currentSession;
     }
 
     @Override
