@@ -118,7 +118,7 @@ public class Room {
      * this Room.
      */
     public int getOccupancy() {
-        return teamRed.getPlayers().size() + teamBlue.getPlayers().size();
+        return teamRed.getSize() + teamBlue.getSize();
     }
 
     /**
