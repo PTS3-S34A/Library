@@ -13,8 +13,8 @@ import nl.soccar.library.enumeration.TeamColour;
  */
 public class Team {
 
+    private final List<Player> players = new ArrayList<>();
     private final TeamColour colour;
-    private List<Player> players;
 
     /**
      * Constructor used for instantiation of a Team object. While initializing,
@@ -24,7 +24,6 @@ public class Team {
      */
     public Team(TeamColour colour) {
         this.colour = colour;
-        players = new ArrayList<>();
     }
 
     /**
@@ -61,6 +60,15 @@ public class Team {
      */
     public List<Player> getPlayers() {
         return Collections.unmodifiableList(players);
+    }
+    
+    /**
+     * Gets the size of this Team.
+     * 
+     * @return The size of this Team.
+     */
+    public int getSize() {
+        return players.size();
     }
 
 }

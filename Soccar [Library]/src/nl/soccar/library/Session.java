@@ -30,6 +30,11 @@ public class Session {
         return game;
     }
     
+    /**
+     * Sets the Game.
+     * 
+     * @param game The game that is given, not null.
+     */
     public void setGame(Game game) {
         this.game = game;
     }
