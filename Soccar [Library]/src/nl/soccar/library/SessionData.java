@@ -1,12 +1,14 @@
 package nl.soccar.library;
 
+import java.io.Serializable;
+
 /**
  * A SessionData is a container object that keeps track of all info of a running
  * session.
  *
  * @author PTS34A
  */
-public class SessionData {
+public class SessionData implements Serializable{
 
     private static final int DEFAULT_OCCUPATION = 1;
     private static final int DEFAULT_CAPACITY = 6;
