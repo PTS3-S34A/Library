@@ -1,11 +1,13 @@
 package nl.soccar.library;
 
+import java.io.Serializable;
+
 /**
  * Keeps track of all Statistics regarding a Player.
  *
  * @author PTS34A
  */
-public class Statistics {
+public class Statistics implements Serializable {
 
     private final String username;
     private final int goals;
@@ -47,12 +49,15 @@ public class Statistics {
      * @return Calculated games ratio, higher/equal than/to 0.
      */
     public double getGamesRatio() {
-        return ((double) gamesWon - (double) gamesLost) / (double) gamesPlayed * 100.0D;
+        if (gamesPlayed > 0) {
+            return ((double) gamesWon - (double) gamesLost) / (double) gamesPlayed * 100.0D;
+        }
+        return 0.0D;
     }
-    
+
     /**
      * Gets the username of these Statistics.
-     * 
+     *
      * @return The username of these Statistics.
      */
     public String getUsername() {
@@ -98,7 +103,8 @@ public class Statistics {
     /**
      * Gets the total amount of played games by a Player.
      *
-     * @return The total number of games that are played, higher/equal than/to 0.
+     * @return The total number of games that are played, higher/equal than/to
+     * 0.
      */
     public int getGamesPlayed() {
         return gamesPlayed;
