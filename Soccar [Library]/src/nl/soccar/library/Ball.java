@@ -9,6 +9,11 @@ import nl.soccar.library.enumeration.BallType;
  */
 public class Ball extends Entity {
 
+    /**
+     * Ball constant in JBox2D units.
+     */
+    public static final float BALL_RADIUS = 2.5F;
+
     private final float radius;
 
     private Player lastTouched;
@@ -23,13 +28,12 @@ public class Ball extends Entity {
      * placed on.
      * @param degree The angle, in degrees, in which this Ball is going in,
      * relative to the Map this Ball is placed on.
-     * @param radius The radius of this Ball in degrees.
      * @param type The BallType of this Ball. The BallType determines how this
      * Ball will be drawn on the screen.
      */
-    public Ball(float x, float y, float degree, float radius, BallType type) {
+    public Ball(float x, float y, float degree, BallType type) {
         super(x, y, degree);
-        this.radius = radius;
+        this.radius = BALL_RADIUS;
         this.type = type;
     }
 
