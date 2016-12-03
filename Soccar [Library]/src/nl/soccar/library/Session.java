@@ -7,7 +7,7 @@ package nl.soccar.library;
  */
 public class Session {
 
-    private Game game;
+    private final Game game;
     private final Room room;
 
     /**
@@ -18,6 +18,7 @@ public class Session {
      * @param password Password of the Room that is nested inside this Session.
      */
     public Session(String name, String password) {
+        game = new Game();
         room = new Room(name, password);
     }
 
@@ -30,15 +31,6 @@ public class Session {
         return game;
     }
     
-    /**
-     * Sets the Game.
-     * 
-     * @param game The game that is given, not null.
-     */
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
     /**
      * Gets the Room.
      *

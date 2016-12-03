@@ -8,11 +8,12 @@ import java.io.Serializable;
  *
  * @author PTS34A
  */
-public class SessionData implements Serializable{
+public class SessionData implements Serializable {
 
     private static final int DEFAULT_OCCUPATION = 1;
     private static final int DEFAULT_CAPACITY = 6;
 
+    private final String address;
     private final String roomName;
     private final String hostName;
     private final boolean hasPassword;
@@ -28,12 +29,22 @@ public class SessionData implements Serializable{
      * @param hostName the name of the player that hosts the session.
      * @param hasPassword Indicates if the room is password protected.
      */
-    public SessionData(String roomName, String hostName, boolean hasPassword) {
+    public SessionData(String address, String roomName, String hostName, boolean hasPassword) {
+        this.address = address;
         this.roomName = roomName;
         this.hostName = hostName;
         this.hasPassword = hasPassword;
         occupation = DEFAULT_OCCUPATION;
         capacity = DEFAULT_CAPACITY;
+    }
+
+    /**
+     * Gets the IP-address of the game server.
+     *
+     * @return The IP-address of the game server.
+     */
+    public String getAddress() {
+        return address;
     }
 
     /**

@@ -13,6 +13,11 @@ import nl.soccar.library.enumeration.ThrottleAction;
  */
 public class Car extends Entity {
 
+    /**
+     * Car constant in JBox2D units.
+     */
+    public static final float CAR_WIDTH = 3.0F;
+
     private final float width;
     private final float height;
 
@@ -38,16 +43,15 @@ public class Car extends Entity {
      * placed on.
      * @param degree The angle, in degrees, in which this Car is going in,
      * relative to the Map this Car is placed on.
-     * @param width The width of this Car, in JBox2D units.
      * @param type The CarType of this Car. The type determines how this Car
      * will be drawn on the screen.
      * @param player The Player that is driving this Car. The player should not
      * be null.
      */
-    public Car(float x, float y, float degree, float width, CarType type, Player player) {
+    public Car(float x, float y, float degree, CarType type, Player player) {
         super(x, y, degree);
 
-        this.width = width;
+        this.width = CAR_WIDTH;
         this.height = width * 2.35F;
 
         wheelWidth = width / 5.0F;

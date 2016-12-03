@@ -32,8 +32,15 @@ public class Game {
      * constant values. The startTime is set to empty, the GameStatus is set to
      * stopped and the events list is initiated.
      */
-    private Game(Map map) {
-        this.map = map;
+    public Game() {
+        Ball ball = new Ball(MapConstants.MAP_WIDTH / 2, MapConstants.MAP_HEIGHT / 2, 0, BallType.FOOTBALL);
+        Rectangle size = new Rectangle(0, 0, MapConstants.MAP_WIDTH, MapConstants.MAP_HEIGHT);
+
+        double goalPositionY = (MapConstants.MAP_HEIGHT / 2) + (MapConstants.GOAL_HEIGHT / 2);
+        Rectangle leftGoal = new Rectangle(MapConstants.FIELD_MARGIN - MapConstants.GOAL_WIDTH, goalPositionY, MapConstants.GOAL_WIDTH, MapConstants.GOAL_HEIGHT);
+        Rectangle rightGoal = new Rectangle(MapConstants.MAP_WIDTH - MapConstants.FIELD_MARGIN, goalPositionY, MapConstants.GOAL_WIDTH, MapConstants.GOAL_HEIGHT);
+
+        map = new Map(size, ball, leftGoal, rightGoal);
 
         status = GameStatus.STOPPED;
     }
@@ -150,62 +157,6 @@ public class Game {
      */
     public LocalTime getEndTime() {
         return endTime;
-    }
-
-    public static class Builder {
-
-        private float mapWidth;
-        private float mapHeight;
-
-        private float goalWidth;
-        private float goalHeight;
-
-        private float fieldMargin;
-
-        private float ballRadius;
-
-        public Builder setMapWidth(float mapWidth) {
-            this.mapWidth = mapWidth;
-            return this;
-        }
-
-        public Builder setMapHeight(float mapHeight) {
-            this.mapHeight = mapHeight;
-            return this;
-        }
-
-        public Builder setGoalWidth(float goalWidth) {
-            this.goalWidth = goalWidth;
-            return this;
-        }
-
-        public Builder setGoalHeight(float goalHeight) {
-            this.goalHeight = goalHeight;
-            return this;
-        }
-
-        public Builder setFieldMargin(float fieldMargin) {
-            this.fieldMargin = fieldMargin;
-            return this;
-        }
-
-        public Builder setBallRadius(float ballRadius) {
-            this.ballRadius = ballRadius;
-            return this;
-        }
-
-        public Game build() {
-            Ball ball = new Ball(mapWidth / 2, mapHeight / 2, 0, ballRadius, BallType.FOOTBALL);
-            Rectangle size = new Rectangle(0, 0, mapWidth, mapHeight);
-
-            double goalPositionY = (mapHeight / 2) + (goalHeight / 2);
-            Rectangle leftGoal = new Rectangle(fieldMargin - goalWidth, goalPositionY, goalWidth, goalHeight);
-            Rectangle rightGoal = new Rectangle(mapWidth - fieldMargin, goalPositionY, goalWidth, goalHeight);
-
-            Map map = new Map(size, ball, leftGoal, rightGoal);
-            return new Game(map);
-        }
-
     }
 
 }
