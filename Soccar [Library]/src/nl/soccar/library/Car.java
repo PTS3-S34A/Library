@@ -28,7 +28,7 @@ public class Car extends Entity {
     private ThrottleAction throttleAction;
     private HandbrakeAction handbrakeAction;
 
-    private int booster;
+    private float boostAmount;
     private CarType type;
     private final Player player;
 
@@ -60,7 +60,7 @@ public class Car extends Entity {
         this.type = type;
         this.player = player;
 
-        booster = 0;
+        boostAmount = 100;
 
         steerAction = SteerAction.NONE;
         throttleAction = ThrottleAction.IDLE;
@@ -104,12 +104,21 @@ public class Car extends Entity {
     }
 
     /**
-     * Gets the remaining booster of this Car.
+     * Gets the remaining boostAmount of this Car.
      *
-     * @return The remaining booster of this Car, between 0 and 100 inclusive.
+     * @return The remaining boostAmount of this Car, between 0 and 100 inclusive.
      */
-    public int getBooster() {
-        return booster;
+    public float getBoostAmount() {
+        return boostAmount;
+    }
+
+    /**
+     * Sets the remaining boostAmount of this Car.
+     *
+     * @return The remaining boostAmount of this Car, between 0 and 100 inclusive.
+     */
+    public void setBoostAmount(float boostAmount) {
+        this.boostAmount = Math.max(0.0F, Math.min(100.0F, boostAmount));
     }
 
     /**
@@ -186,4 +195,5 @@ public class Car extends Entity {
     public HandbrakeAction getHandbrakeAction() {
         return handbrakeAction;
     }
+
 }
