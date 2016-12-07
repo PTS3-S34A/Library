@@ -25,6 +25,8 @@ public class SessionData implements Serializable {
      * SessionData object serves as a container object of of all info of a
      * running session.
      *
+     * @param address The address of the game server on which this session is
+     * hosted.
      * @param roomName The name of the room.
      * @param hostName the name of the player that hosts the session.
      * @param hasPassword Indicates if the room is password protected.
