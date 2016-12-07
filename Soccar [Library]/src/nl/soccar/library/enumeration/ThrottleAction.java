@@ -7,6 +7,6 @@ package nl.soccar.library.enumeration;
  */
 public enum ThrottleAction {
     
-    IDLE, ACCELERATE, REVERSE
+    IDLE, ACCELERATE, BOOST, REVERSE
     
 }
