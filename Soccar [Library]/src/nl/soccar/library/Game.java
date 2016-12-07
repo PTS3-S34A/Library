@@ -1,12 +1,16 @@
 package nl.soccar.library;
 
+import javafx.scene.shape.Rectangle;
+import nl.soccar.library.enumeration.BallType;
+import nl.soccar.library.enumeration.EventType;
+import nl.soccar.library.enumeration.GameStatus;
+
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javafx.scene.shape.Rectangle;
-import nl.soccar.library.enumeration.BallType;
-import nl.soccar.library.enumeration.GameStatus;
+import java.util.stream.Collectors;
 
 /**
  * A Game is an object which contains information about a match, like the
@@ -21,6 +25,7 @@ public class Game {
     private final List<Event> events = new ArrayList<>();
 
     private final Map map;
+    private Notification notification;
     private GameStatus status;
 
     private LocalTime startTime;
@@ -41,7 +46,6 @@ public class Game {
         Rectangle rightGoal = new Rectangle(MapConstants.MAP_WIDTH - MapConstants.FIELD_MARGIN, goalPositionY, MapConstants.GOAL_WIDTH, MapConstants.GOAL_HEIGHT);
 
         map = new Map(size, ball, leftGoal, rightGoal);
-
         status = GameStatus.STOPPED;
     }
 
@@ -122,6 +126,20 @@ public class Game {
     }
 
     /**
+     * Returns the List size for a given EventType.
+     *
+     * @param type
+     * @return int The size of the List
+     */
+    public int getEventCountByType(EventType type) {
+        return (int) events.stream().filter(e -> e.getType().equals(type)).count();
+    }
+
+    public Event getLastGoalEvent() {
+        return events.stream().filter(e -> e.getType().equals(EventType.GOAL_BLUE) || e.getType().equals(EventType.GOAL_RED)).collect(Collectors.toList()).get(0);
+    }
+
+    /**
      * Gets the Map that belongs to this Game.
      *
      * @return This Game's Map.
@@ -159,4 +177,48 @@ public class Game {
         return endTime;
     }
 
+    /**
+     * Gets the seconds remaining for the current game.
+     *
+     * @return
+     */
+    public int getSecondsLeft() {
+        int diff = (int) ChronoUnit.SECONDS.between(startTime, LocalTime.now());
+        return getDurationInSeconds() - diff;
+    }
+
+
+    /**
+     * Returns the game duration in seconds.
+     *
+     * @return int Duration in seconds.
+     */
+    private int getDurationInSeconds() {
+        switch (settings.getDuration()) {
+            case MINUTES_3:
+                return 180;
+            case MINUTES_5:
+                return 300;
+            case MINUTES_10:
+                return 600;
+            default:
+                return 0;
+        }
+    }
+
+    public String getTimeLeftString() {
+        int duration = getSecondsLeft();
+        int minutes = duration / 60;
+        int seconds = duration % 60;
+
+        return String.format("%d:%02d", minutes, seconds);
+    }
+
+    public Notification getNotification() {
+        return notification;
+    }
+
+    public void setNotification(Notification notification) {
+        this.notification = notification;
+    }
 }
