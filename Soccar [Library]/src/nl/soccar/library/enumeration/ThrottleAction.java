@@ -7,20 +7,21 @@ package nl.soccar.library.enumeration;
  */
 public enum ThrottleAction {
     
-    IDLE(0), 
-    ACCELERATE(1), 
+    IDLE(0),
+    ACCELERATE(1),
     REVERSE(2);
-    
+    BOOST(3);
+
     private final int id;
 
     private ThrottleAction(int id) {
         this.id = id;
     }
-    
+
     public int getId() {
         return id;
     }
-    
+
     public static ThrottleAction parse(int id) {
         switch (id) {
             case 0:

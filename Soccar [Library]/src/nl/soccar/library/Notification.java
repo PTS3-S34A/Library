@@ -1,6 +1,7 @@
 package nl.soccar.library;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Class that represents the Notification model.
@@ -9,42 +10,40 @@ import javafx.scene.text.Font;
  */
 public class Notification extends Entity {
 
-    private final String content;
-    private final Font font;
-    private final Color fill;
-    private final Color stroke;
+    private Player player;
+    private LocalTime displayTime;
+    private final int displayDuration;
 
     /**
      * Initiates a new Notification using the given parameters.
      * @param x The x-coordinate, relative to the map, of this Notification.
      * @param y The y-coordinate, relative to the map, of this Notification.
      * @param degree The angle of this Notification.
-     * @param content The text to be displayed.
-     * @param font The font for the text to be displayed.
-     * @param fill The fill color for the text.
-     * @param stroke The stroke color for the text.
+     * @param displayDuration The duration the notification should be displayed.
      */
-    public Notification(float x, float y, float degree, String content, Font font, Color fill, Color stroke) {
+    public Notification(float x, float y, float degree, int displayDuration) {
         super(x, y, degree);
-        this.content = content;
-        this.font = font;
-        this.fill = fill;
-        this.stroke = stroke;
+        this.displayDuration = displayDuration;
+        this.displayTime = LocalTime.MIN;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setDisplayTime(LocalTime displayTime) {
+        this.displayTime = displayTime;
     }
 
     public String getContent() {
-        return content;
+        return String.format("%s %s", player.getUsername(), "SCORED!");
     }
 
-    public Font getFont() {
-        return font;
-    }
-
-    public Color getStroke() {
-        return stroke;
-    }
-
-    public Color getFill() {
-        return fill;
+    public boolean isActive() {
+        return ChronoUnit.SECONDS.between(displayTime, LocalTime.now()) <= displayDuration;
     }
 }
