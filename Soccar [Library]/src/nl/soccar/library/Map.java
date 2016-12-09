@@ -62,7 +62,7 @@ public class Map {
      * no Car added in this Map that is driven by the given player.
      */
     public Car getCarFromPlayer(Player player) {
-        return cars.stream().filter(c -> c.getPlayer().equals(player)).findFirst().get();
+        return cars.stream().filter(c -> c.getPlayer().getUsername().equals(player.getUsername())).findFirst().get();
     }
 
     /**

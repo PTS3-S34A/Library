@@ -7,8 +7,31 @@ package nl.soccar.library.enumeration;
  */
 public enum Privilege {
     
-    GUEST,
-    NORMAL,
-    ADMINISTRATOR
+    GUEST(0),
+    NORMAL(1),
+    ADMINISTRATOR(2);
+    
+    private final int id;
+
+    private Privilege(int id) {
+        this.id = id;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public static Privilege parse(int id) {
+        switch (id) {
+            case 0:
+                return GUEST;
+            case 1:
+                return NORMAL;
+            case 2:
+                return ADMINISTRATOR;
+            default:
+                throw new IllegalArgumentException("Invalid id.");
+        }
+    }
     
 }

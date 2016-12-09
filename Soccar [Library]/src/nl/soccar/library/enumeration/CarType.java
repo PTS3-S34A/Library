@@ -7,8 +7,31 @@ package nl.soccar.library.enumeration;
  */
 public enum CarType {
     
-    SPORTSCAR,
-    PICKUP,
-    CASUAL
+    SPORTSCAR(0),
+    PICKUP(1),
+    CASUAL(2);
+    
+    private final int id;
+
+    private CarType(int id) {
+        this.id = id;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public static CarType parse(int id) {
+        switch (id) {
+            case 0:
+                return SPORTSCAR;
+            case 1:
+                return PICKUP;
+            case 2:
+                return CASUAL;
+            default:
+                throw new IllegalArgumentException("Invalid id.");
+        }
+    }
     
 }
