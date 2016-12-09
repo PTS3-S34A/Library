@@ -9,7 +9,7 @@ public enum ThrottleAction {
     
     IDLE(0),
     ACCELERATE(1),
-    REVERSE(2);
+    REVERSE(2),
     BOOST(3);
 
     private final int id;
@@ -30,6 +30,8 @@ public enum ThrottleAction {
                 return ACCELERATE;
             case 2:
                 return REVERSE;
+            case 3:
+                return BOOST;
             default:
                 throw new IllegalArgumentException("Invalid id.");
         }
