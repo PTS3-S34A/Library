@@ -1,8 +1,12 @@
 package nl.soccar.library.test;
 
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+import java.time.LocalTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nl.soccar.library.Notification;
+import nl.soccar.library.Player;
+import nl.soccar.library.enumeration.CarType;
+import nl.soccar.library.enumeration.Privilege;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -14,17 +18,19 @@ import static org.junit.Assert.*;
  */
 public class NotificationTest {
 
+    private static final Logger LOGGER = Logger.getLogger(NotificationTest.class.getSimpleName());
+
     // Declaration of test objects.
-    private Font font;
     private Notification notification;
+    private Player player;
 
     /**
      * Instantiation of test objects.
      */
     @Before
     public void setUp() {
-        font = new Font("Font", 1);
-        notification = new Notification(1.0F, 2.0F, 3.0F, "content", font, Color.BLACK, Color.BLUE);
+        notification = new Notification(1.0F, 2.0F, 3.0F, 4);
+        player = new Player("username", Privilege.NORMAL, CarType.CASUAL);
     }
 
     @Test
@@ -65,35 +71,39 @@ public class NotificationTest {
     }
 
     /**
+     * Tests the getPlayer and setPlayer methods.
+     */
+    @Test
+    public void getPlayerAndSetPlayerTest() {
+        notification.setPlayer(player);
+        assertEquals(player, notification.getPlayer());
+    }
+
+    /**
+     * Tests the setDisplayTime and isActive methods.
+     */
+    @Test
+    public void setDisplayTimeAndIsActiveTest() {
+        notification.setDisplayTime(LocalTime.now());
+        assertTrue(notification.isActive());
+        
+        // Wait for five seconds so that the notification becomes unactive.
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            LOGGER.log(Level.WARNING, "An error occurred while temporarily ceasing execution during the setDisplayTime and isActive methods", e);
+        }
+        
+        assertFalse(notification.isActive());
+    }
+
+    /**
      * Tests the getContent method.
      */
     @Test
     public void getContentTest() {
-        assertEquals("content", notification.getContent());
-    }
-
-    /**
-     * Tests the getFont method.
-     */
-    @Test
-    public void getFontTest() {
-        assertEquals(font, notification.getFont());
-    }
-
-    /**
-     * Tests the getStroke method.
-     */
-    @Test
-    public void getStrokeTest() {
-        assertEquals(Color.BLUE, notification.getStroke());
-    }
-
-    /**
-     * Tests the getStroke method.
-     */
-    @Test
-    public void getFillTest() {
-        assertEquals(Color.BLACK, notification.getFill());
+        notification.setPlayer(player);
+        assertEquals(String.format("%s %s", player.getUsername(), "SCORED!"), notification.getContent());
     }
 
 }
