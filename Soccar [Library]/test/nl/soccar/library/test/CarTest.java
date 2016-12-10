@@ -104,12 +104,14 @@ public class CarTest {
     }
 
     /**
-     * Tests the getBooster method.
+     * Tests the getBoostAmount and setBoostAmount methods.
      */
     @Test
     public void getBooster() {
-        assertEquals(0, car.getBooster());
+        car.setBoostAmount(80);
+        assertEquals(80, Math.round(car.getBoostAmount()));
     }
+
 
     /**
      * Tests the getCarType method.
