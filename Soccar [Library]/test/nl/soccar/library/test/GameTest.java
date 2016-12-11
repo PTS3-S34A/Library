@@ -3,8 +3,10 @@ package nl.soccar.library.test;
 import java.time.LocalTime;
 import nl.soccar.library.Event;
 import nl.soccar.library.Game;
+import nl.soccar.library.Notification;
 import nl.soccar.library.Player;
 import nl.soccar.library.enumeration.CarType;
+import nl.soccar.library.enumeration.Duration;
 import nl.soccar.library.enumeration.EventType;
 import nl.soccar.library.enumeration.GameStatus;
 import nl.soccar.library.enumeration.Privilege;
@@ -22,7 +24,9 @@ public class GameTest {
     // Declaration of test objects.
     private Game game;
     private Player player;
-    private Event event;
+    private Event eventGoalRed;
+    private Event eventGoalBlue;
+    private Notification notification;
 
     /**
      * Instantiation of test objects.
@@ -31,7 +35,9 @@ public class GameTest {
     public void setUp() {
         game = new Game();
         player = new Player("username", Privilege.NORMAL, CarType.CASUAL);
-        event = new Event(EventType.GOAL_RED, LocalTime.of(13, 55, 03), player);
+        eventGoalRed = new Event(EventType.GOAL_RED, LocalTime.of(13, 55, 03), player);
+        eventGoalBlue = new Event(EventType.GOAL_BLUE, LocalTime.of(13, 55, 03), player);
+        notification = new Notification(1.0F, 2.0F, 3.0F, 4);
     }
 
     /**
@@ -88,8 +94,28 @@ public class GameTest {
      */
     @Test
     public void addEventAndGetEventsTest() {
-        game.addEvent(event);
-        assertEquals(event, game.getEvents().get(0));
+        game.addEvent(eventGoalRed);
+        assertEquals(eventGoalRed, game.getEvents().get(0));
+    }
+
+    /**
+     * Tests the getEventCountByType method.
+     */
+    @Test
+    public void getEventCountByTypeTest() {
+        game.addEvent(eventGoalRed);
+        assertEquals(1, game.getEventCountByType(EventType.GOAL_RED));
+    }
+
+    /**
+     * Tests the getLastGoalEvent method.
+     */
+    @Test
+    public void getLastGoalEvent() {
+        game.addEvent(eventGoalRed);
+        assertEquals(eventGoalRed, game.getLastGoalEvent());
+        game.addEvent(eventGoalBlue);
+        assertEquals(eventGoalBlue, game.getLastGoalEvent());
     }
 
     /**
@@ -122,6 +148,39 @@ public class GameTest {
     @Test
     public void getEndtimeTest() {
         assertNull(game.getEndTime());
+    }
+
+    /**
+     * Tests the getSecondsLeft and getTimeLeftString methods.
+     */
+    @Test
+    public void getSecondsLeftTest() {
+        game.start();
+        game.getGameSettings().setDuration(Duration.MINUTES_3);
+        assertEquals(3 * 60, game.getSecondsLeft());
+        assertEquals(String.format("%d:%02d", 3, 0), game.getTimeLeftString());
+        game.stop();
+
+        game.start();
+        game.getGameSettings().setDuration(Duration.MINUTES_5);
+        assertEquals(5 * 60, game.getSecondsLeft());
+        assertEquals(String.format("%d:%02d", 5, 0), game.getTimeLeftString());
+        game.stop();
+
+        game.start();
+        game.getGameSettings().setDuration(Duration.MINUTES_10);
+        assertEquals(10 * 60, game.getSecondsLeft());
+        assertEquals(String.format("%d:%02d", 10, 0), game.getTimeLeftString());
+        game.stop();
+    }
+
+    /**
+     * Tests the getNotification and setNotification methods.
+     */
+    @Test
+    public void getNotificationAndSetNotificationTest() {
+        game.setNotification(notification);
+        assertEquals(notification, game.getNotification());
     }
 
 }
