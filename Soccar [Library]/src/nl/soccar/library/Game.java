@@ -59,6 +59,8 @@ public class Game {
         if (status != GameStatus.STOPPED) {
             return;
         }
+        
+        events.clear();
 
         map.setMapType(settings.getMapType());
         map.getBall().setBallType(settings.getBallType());
@@ -196,7 +198,7 @@ public class Game {
     private int getDurationInSeconds() {
         switch (settings.getDuration()) {
             case MINUTES_3:
-                return 180;
+                return 10;
             case MINUTES_5:
                 return 300;
             case MINUTES_10:
