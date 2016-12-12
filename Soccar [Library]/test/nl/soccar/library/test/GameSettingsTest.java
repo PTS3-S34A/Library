@@ -7,6 +7,9 @@ import nl.soccar.library.enumeration.MapType;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit test that tests the nl.soccar.library.GameSettings class.
@@ -31,8 +34,8 @@ public class GameSettingsTest {
      */
     @Test
     public void getMapTypeAndSetMapTypeTest() {
-        gameSettings.setMapType(MapType.MOON);
-        assertEquals(MapType.MOON, gameSettings.getMapType());
+        gameSettings.setMapType(MapType.ICE);
+        assertEquals(MapType.ICE, gameSettings.getMapType());
     }
 
     /**
@@ -40,8 +43,8 @@ public class GameSettingsTest {
      */
     @Test
     public void getBallTypeAndSetBallTypeTest() {
-        gameSettings.setBallType(BallType.BOWLING);
-        assertEquals(BallType.BOWLING, gameSettings.getBallType());
+        gameSettings.setBallType(BallType.SNOWBALL);
+        assertEquals(BallType.SNOWBALL, gameSettings.getBallType());
     }
 
     /**

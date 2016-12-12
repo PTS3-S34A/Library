@@ -35,7 +35,7 @@ public class MapTest {
     public void setUp() {
         player = new Player("username", Privilege.NORMAL, CarType.CASUAL);
         car = new Car(0.0F, 0.0F, 0.0F, CarType.PICKUP, player);
-        ball = new Ball(0.0F, 0.0F, 0.0F, BallType.HOCKEY);
+        ball = new Ball(0.0F, 0.0F, 0.0F, BallType.PUCK);
         goalBlue = new Rectangle(1, 2, 10, 20);
         goalRed = new Rectangle(3, 4, 30, 40);
         map = new Map(new Rectangle(5, 6, 50, 60), ball, goalBlue, goalRed);

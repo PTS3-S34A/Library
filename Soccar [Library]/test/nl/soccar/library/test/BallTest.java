@@ -24,7 +24,7 @@ public class BallTest {
      */
     @Before
     public void setUp() {
-        ball = new Ball(1.0F, 2.0F, 3.0F, BallType.HOCKEY);
+        ball = new Ball(1.0F, 2.0F, 3.0F, BallType.PUCK);
     }
 
     /**
@@ -92,7 +92,7 @@ public class BallTest {
      */
     @Test
     public void getBallTypeTest() {
-        assertEquals(BallType.HOCKEY, ball.getBallType());
+        assertEquals(BallType.PUCK, ball.getBallType());
     }
 
 }

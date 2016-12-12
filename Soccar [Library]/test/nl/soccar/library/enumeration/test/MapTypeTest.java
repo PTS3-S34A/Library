@@ -34,8 +34,8 @@ public class MapTypeTest {
     @Test
     public void parseTest() {
         assertEquals(MapType.GRASSLAND, MapType.parse(0));
-        assertEquals(MapType.MOON, MapType.parse(1));
-        assertEquals(MapType.DESERT, MapType.parse(2));
+        assertEquals(MapType.ICE, MapType.parse(1));
+        assertEquals(MapType.CHRISTMAS, MapType.parse(2));
     }
 
     /**

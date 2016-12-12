@@ -8,8 +8,8 @@ package nl.soccar.library.enumeration;
 public enum MapType {
     
     GRASSLAND(0),
-    MOON(1),
-    DESERT(2);
+    ICE(1),
+    CHRISTMAS(2);
     
     private final int id;
 
@@ -26,9 +26,9 @@ public enum MapType {
             case 0:
                 return GRASSLAND;
             case 1:
-                return MOON;
+                return ICE;
             case 2:
-                return DESERT;
+                return CHRISTMAS;
             default:
                 throw new IllegalArgumentException("Invalid id.");
         }

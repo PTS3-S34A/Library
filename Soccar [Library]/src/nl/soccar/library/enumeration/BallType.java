@@ -8,8 +8,8 @@ package nl.soccar.library.enumeration;
 public enum BallType {
 
     FOOTBALL(0),
-    HOCKEY(1),
-    BOWLING(2);
+    PUCK(1),
+    SNOWBALL(2);
     
     private final int id;
 
@@ -26,9 +26,9 @@ public enum BallType {
             case 0:
                 return FOOTBALL;
             case 1:
-                return HOCKEY;
+                return PUCK;
             case 2:
-                return BOWLING;
+                return SNOWBALL;
             default:
                 throw new IllegalArgumentException("Invalid id.");
         }
