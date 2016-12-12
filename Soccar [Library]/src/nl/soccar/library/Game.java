@@ -59,6 +59,8 @@ public class Game {
         if (status != GameStatus.STOPPED) {
             return;
         }
+        
+        events.clear();
 
         map.setMapType(settings.getMapType());
         map.getBall().setBallType(settings.getBallType());
