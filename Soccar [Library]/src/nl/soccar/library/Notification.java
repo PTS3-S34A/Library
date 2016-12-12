@@ -2,6 +2,7 @@ package nl.soccar.library;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import javafx.scene.paint.Color;
 
 /**
  * Class that represents the Notification model.
@@ -11,6 +12,8 @@ import java.time.temporal.ChronoUnit;
 public class Notification extends Entity {
 
     private Player player;
+    private Color textColor;
+    
     private LocalTime displayTime;
     private final int displayDuration;
 
@@ -21,16 +24,21 @@ public class Notification extends Entity {
      * @param degree The angle of this Notification.
      * @param displayDuration The duration the notification should be displayed.
      */
-    public Notification(float x, float y, float degree, int displayDuration) {
+    public Notification(float x, float y, float degree, int displayDuration, Color textColor) {
         super(x, y, degree);
         this.displayDuration = displayDuration;
         this.displayTime = LocalTime.MIN;
+        this.textColor = textColor;
     }
 
     public Player getPlayer() {
         return player;
     }
 
+    public Color getTextColor() {
+        return textColor;
+    }
+    
     public void setPlayer(Player player) {
         this.player = player;
     }
