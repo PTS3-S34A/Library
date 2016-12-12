@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public class SessionData implements Serializable {
 
-    private static final int DEFAULT_OCCUPATION = 1;
+    private static final int DEFAULT_OCCUPATION = 0;
     private static final int DEFAULT_CAPACITY = 6;
 
     private final String address;
