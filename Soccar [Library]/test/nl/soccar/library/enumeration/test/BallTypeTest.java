@@ -4,6 +4,9 @@ import nl.soccar.library.enumeration.BallType;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests the BallType enumeration.
@@ -34,8 +37,8 @@ public class BallTypeTest {
     @Test
     public void parseTest() {
         assertEquals(BallType.FOOTBALL, BallType.parse(0));
-        assertEquals(BallType.HOCKEY, BallType.parse(1));
-        assertEquals(BallType.BOWLING, BallType.parse(2));
+        assertEquals(BallType.PUCK, BallType.parse(1));
+        assertEquals(BallType.SNOWBALL, BallType.parse(2));
     }
 
     /**

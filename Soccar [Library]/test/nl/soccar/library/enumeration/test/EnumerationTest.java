@@ -26,13 +26,13 @@ public class EnumerationTest {
      */
     @Test
     public void testAllEnumerations() {
-        BallType.valueOf(BallType.BOWLING.toString());
+        BallType.valueOf(BallType.SNOWBALL.toString());
         CarType.valueOf(CarType.CASUAL.toString());
         Duration.valueOf(Duration.MINUTES_10.toString());
         EventType.valueOf(EventType.ASSIST.toString());
         GameStatus.valueOf(GameStatus.RUNNING.toString());
         HandbrakeAction.valueOf(HandbrakeAction.ACTIVE.toString());
-        MapType.valueOf(MapType.DESERT.toString());
+        MapType.valueOf(MapType.ICE.toString());
         ObstacleType.valueOf(ObstacleType.WALL.toString());
         Privilege.valueOf(Privilege.ADMINISTRATOR.toString());
         SteerAction.valueOf(SteerAction.NONE.toString());

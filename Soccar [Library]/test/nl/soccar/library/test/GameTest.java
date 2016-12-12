@@ -1,6 +1,7 @@
 package nl.soccar.library.test;
 
 import java.time.LocalTime;
+import javafx.scene.paint.Color;
 import nl.soccar.library.Event;
 import nl.soccar.library.Game;
 import nl.soccar.library.Notification;
@@ -37,7 +38,7 @@ public class GameTest {
         player = new Player("username", Privilege.NORMAL, CarType.CASUAL);
         eventGoalRed = new Event(EventType.GOAL_RED, LocalTime.of(13, 55, 03), player);
         eventGoalBlue = new Event(EventType.GOAL_BLUE, LocalTime.of(13, 55, 03), player);
-        notification = new Notification(1.0F, 2.0F, 3.0F, 4);
+        notification = new Notification(1.0F, 2.0F, 3.0F, 4, Color.WHITE);
     }
 
     /**

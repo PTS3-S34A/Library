@@ -3,6 +3,7 @@ package nl.soccar.library.test;
 import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.paint.Color;
 import nl.soccar.library.Notification;
 import nl.soccar.library.Player;
 import nl.soccar.library.enumeration.CarType;
@@ -29,7 +30,7 @@ public class NotificationTest {
      */
     @Before
     public void setUp() {
-        notification = new Notification(1.0F, 2.0F, 3.0F, 4);
+        notification = new Notification(1.0F, 2.0F, 3.0F, 4, Color.WHITE);
         player = new Player("username", Privilege.NORMAL, CarType.CASUAL);
     }
 
