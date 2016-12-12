@@ -103,6 +103,23 @@ public class Player {
     }
 
     @Override
+    public int hashCode() {
+        int result = 31;
+        result = 17 * result + username.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || !(o instanceof Player)) {
+            return false;
+        }
+
+        Player other = (Player) o;
+        return other.getUsername().equals(username);
+    }
+
+    @Override
     public String toString() {
         return username;
     }
