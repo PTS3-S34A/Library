@@ -15,7 +15,7 @@ public class SessionData implements Serializable {
 
     private final String address;
     private final String roomName;
-    private final String hostName;
+    private String hostName;
     private final boolean hasPassword;
     private int occupation;
     private int capacity;
@@ -93,6 +93,15 @@ public class SessionData implements Serializable {
      */
     public int getCapacity() {
         return capacity;
+    }
+
+    /**
+     * Sets the hostname of the session.
+     *
+     * @param hostName The hostname that needs to be set for the session.
+     */
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
     }
 
     /**
