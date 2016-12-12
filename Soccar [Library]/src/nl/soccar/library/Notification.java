@@ -23,6 +23,7 @@ public class Notification extends Entity {
      * @param y The y-coordinate, relative to the map, of this Notification.
      * @param degree The angle of this Notification.
      * @param displayDuration The duration the notification should be displayed.
+     * @param textColor The color that the notification should be displayed in.
      */
     public Notification(float x, float y, float degree, int displayDuration, Color textColor) {
         super(x, y, degree);
