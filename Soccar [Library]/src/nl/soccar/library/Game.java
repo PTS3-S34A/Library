@@ -198,7 +198,7 @@ public class Game {
     private int getDurationInSeconds() {
         switch (settings.getDuration()) {
             case MINUTES_3:
-                return 10;
+                return 180;
             case MINUTES_5:
                 return 300;
             case MINUTES_10:
