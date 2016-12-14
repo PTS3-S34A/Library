@@ -14,8 +14,11 @@ public class Player {
     private final String username;
     private final Privilege privilege;
     private final CarType carType;
+
+
     private Statistics statistics;
 
+    private int playerId;
     private Session currentSession;
 
     /**
@@ -102,10 +105,29 @@ public class Player {
         this.currentSession = currentSession;
     }
 
+    /**
+     * Gets the id of the Player, relative to the Session that he/she joined.
+     *
+     * @return The id of the Player.
+     */
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    /**
+     * Sets the id of the Player. Be warned that this method may break communication between components.
+     *
+     * @param playerId The new id of the Player.
+     */
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
+
     @Override
     public int hashCode() {
         int result = 31;
         result = 17 * result + username.hashCode();
+        result = 17 * result + playerId;
         return result;
     }
 
@@ -116,7 +138,7 @@ public class Player {
         }
 
         Player other = (Player) o;
-        return other.getUsername().equals(username);
+        return other.username.equals(username) && other.playerId == playerId;
     }
 
     @Override
