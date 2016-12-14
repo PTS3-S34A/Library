@@ -127,6 +127,7 @@ public class Player {
     public int hashCode() {
         int result = 31;
         result = 17 * result + username.hashCode();
+        result = 17 * result + playerId;
         return result;
     }
 
@@ -137,7 +138,7 @@ public class Player {
         }
 
         Player other = (Player) o;
-        return other.getUsername().equals(username);
+        return other.username.equals(username) && other.playerId == playerId;
     }
 
     @Override
