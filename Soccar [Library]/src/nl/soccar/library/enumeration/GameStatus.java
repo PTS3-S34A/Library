@@ -9,6 +9,7 @@ public enum GameStatus {
 
     RUNNING,
     SCORED,
+    PAUSED,
     STOPPED
     
 }
