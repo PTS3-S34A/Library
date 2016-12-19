@@ -1,6 +1,9 @@
 package nl.soccar.library.test;
 
+import nl.soccar.library.Player;
 import nl.soccar.library.Session;
+import nl.soccar.library.enumeration.CarType;
+import nl.soccar.library.enumeration.Privilege;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -14,12 +17,14 @@ public class SessionTest {
 
     // Declaration of test object.
     private Session session;
+    private Player player;
 
     /**
      * Instantiation of test object.
      */
     @Before
     public void setUp() {
+        player = new Player("username", Privilege.NORMAL, CarType.CASUAL);
         session = new Session("name", "password");
     }
 
@@ -38,5 +43,5 @@ public class SessionTest {
     public void getRoomTest() {
         assertNotNull(session.getRoom());
     }
-    
+
 }
