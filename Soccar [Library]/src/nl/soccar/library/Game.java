@@ -5,12 +5,10 @@ import nl.soccar.library.enumeration.BallType;
 import nl.soccar.library.enumeration.EventType;
 import nl.soccar.library.enumeration.GameStatus;
 
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 /**
  * A Game is an object which contains information about a match, like the
@@ -28,8 +26,7 @@ public class Game {
     private Notification notification;
     private GameStatus status;
 
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private int timeLeft;
 
     /**
      * Constructor used to instantiate a new Game object. While initializing
@@ -65,10 +62,8 @@ public class Game {
         map.setMapType(settings.getMapType());
         map.getBall().setBallType(settings.getBallType());
 
-        status = GameStatus.RUNNING;
-
-        startTime = LocalTime.now();
-        endTime = null;
+        timeLeft = getDurationInSeconds();
+        status = GameStatus.PAUSED;
     }
 
     /**
@@ -80,9 +75,36 @@ public class Game {
             return;
         }
 
+        timeLeft = 0;
         status = GameStatus.STOPPED;
+    }
 
-        endTime = LocalTime.now();
+    public void decreaseGameTime() {
+        if (status == GameStatus.RUNNING && --timeLeft <= 0) {
+            stop();
+        }
+    }
+
+    public void setGameTime(int timeLeft) {
+        if (status == GameStatus.RUNNING) {
+            this.timeLeft = timeLeft;
+
+            if (timeLeft <= 0) {
+                stop();
+            }
+        }
+    }
+
+    public void togglePause() {
+        if (status == GameStatus.STOPPED) {
+            return;
+        }
+
+        if (status == GameStatus.RUNNING || status == GameStatus.SCORED) {
+            status = GameStatus.PAUSED;
+        } else if (status == GameStatus.PAUSED) {
+            status = GameStatus.RUNNING;
+        }
     }
 
     /**
@@ -134,11 +156,16 @@ public class Game {
      * @return int The size of the List
      */
     public int getEventCountByType(EventType type) {
-        return (int) events.stream().filter(e -> e.getType().equals(type)).count();
+        return (int) events.stream().filter(e -> e.getType() == type).count();
     }
 
     public Event getLastGoalEvent() {
-        return events.stream().filter(e -> e.getType().equals(EventType.GOAL_BLUE) || e.getType().equals(EventType.GOAL_RED)).collect(Collectors.toList()).get(0);
+        Optional<Event> optional = events.stream().filter(e -> e.getType() == EventType.GOAL_BLUE || e.getType() == EventType.GOAL_RED).findFirst();
+        if (!optional.isPresent()) {
+            return null;
+        }
+
+        return optional.get();
     }
 
     /**
@@ -160,35 +187,13 @@ public class Game {
     }
 
     /**
-     * Gets the time at which this Game started.
-     *
-     * @return The start-time of this Game. If this game has never been started,
-     * this method will return null.
-     */
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    /**
-     * Gets the time at which this Game ended.
-     *
-     * @return The end-time of this Game. If this game has not been ended yet,
-     * this method returns null.
-     */
-    public LocalTime getEndTime() {
-        return endTime;
-    }
-
-    /**
      * Gets the seconds remaining for the current game.
      *
      * @return
      */
     public int getSecondsLeft() {
-        int diff = (int) ChronoUnit.SECONDS.between(startTime, LocalTime.now());
-        return getDurationInSeconds() - diff;
+        return timeLeft;
     }
-
 
     /**
      * Returns the game duration in seconds.
@@ -204,7 +209,7 @@ public class Game {
             case MINUTES_10:
                 return 600;
             default:
-                return 0;
+                throw new UnsupportedOperationException("Invalid duration.");
         }
     }
 
