@@ -7,7 +7,7 @@ import org.junit.Test;
 
 
 /**
- * JUnit test that tests the nl.soccar.exception.DuplicateValueExceptionTest class.
+ * JUnit test that tests the nl.soccar.exception.DuplicateValueException class.
  *
  * @author PTS34A
  */
