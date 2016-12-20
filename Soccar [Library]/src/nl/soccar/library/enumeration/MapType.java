@@ -13,17 +13,8 @@ public enum MapType {
 
     private final int id;
 
-    private MapType(int id) {
+    MapType(int id) {
         this.id = id;
-    }
-
-    /**
-     * Gets the id of the MapType enumeration value.
-     *
-     * @return The id of the MapType enumeration value.
-     */
-    public int getId() {
-        return id;
     }
 
     /**
@@ -33,16 +24,28 @@ public enum MapType {
      * @return The MapType enumeration value based on the given id.
      */
     public static MapType parse(int id) {
-        switch (id) {
-            case 0:
-                return GRASSLAND;
-            case 1:
-                return ICE;
-            case 2:
-                return CHRISTMAS;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
+        if (id == GRASSLAND.id) {
+            return GRASSLAND;
         }
+
+        if (id == ICE.id) {
+            return ICE;
+        }
+
+        if (id == CHRISTMAS.id) {
+            return CHRISTMAS;
+        }
+
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the MapType enumeration value.
+     *
+     * @return The id of the MapType enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

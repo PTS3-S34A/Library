@@ -12,17 +12,8 @@ public enum HandbrakeAction {
 
     private final int id;
 
-    private HandbrakeAction(int id) {
+    HandbrakeAction(int id) {
         this.id = id;
-    }
-
-    /**
-     * Gets the id of the HandbrakeAction enumeration value.
-     *
-     * @return The id of the HandbrakeAction enumeration value.
-     */
-    public int getId() {
-        return id;
     }
 
     /**
@@ -32,14 +23,24 @@ public enum HandbrakeAction {
      * @return The HandbrakeAction enumeration value based on the given id.
      */
     public static HandbrakeAction parse(int id) {
-        switch (id) {
-            case 0:
-                return ACTIVE;
-            case 1:
-                return INACTIVE;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
+        if (id == ACTIVE.id) {
+            return ACTIVE;
         }
+
+        if (id == INACTIVE.id) {
+            return INACTIVE;
+        }
+
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the HandbrakeAction enumeration value.
+     *
+     * @return The id of the HandbrakeAction enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

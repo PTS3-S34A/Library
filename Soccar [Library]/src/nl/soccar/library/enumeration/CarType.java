@@ -13,17 +13,8 @@ public enum CarType {
 
     private final int id;
 
-    private CarType(int id) {
+    CarType(int id) {
         this.id = id;
-    }
-
-    /**
-     * Gets the id of the CarType enumeration value.
-     *
-     * @return The id of the CarType enumeration value.
-     */
-    public int getId() {
-        return id;
     }
 
     /**
@@ -33,16 +24,28 @@ public enum CarType {
      * @return The CarType enumeration value based on the given id.
      */
     public static CarType parse(int id) {
-        switch (id) {
-            case 0:
-                return SPORTSCAR;
-            case 1:
-                return PICKUP;
-            case 2:
-                return CASUAL;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
+        if (id == SPORTSCAR.id) {
+            return SPORTSCAR;
         }
+
+        if (id == PICKUP.id) {
+            return PICKUP;
+        }
+
+        if (id == CASUAL.id) {
+            return CASUAL;
+        }
+
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the CarType enumeration value.
+     *
+     * @return The id of the CarType enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

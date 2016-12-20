@@ -13,17 +13,8 @@ public enum Duration {
 
     private final int id;
 
-    private Duration(int id) {
+    Duration(int id) {
         this.id = id;
-    }
-
-    /**
-     * Gets the id of the Duration enumeration value.
-     *
-     * @return The id of the Duration enumeration value.
-     */
-    public int getId() {
-        return id;
     }
 
     /**
@@ -33,16 +24,28 @@ public enum Duration {
      * @return The Duration enumeration value based on the given id.
      */
     public static Duration parse(int id) {
-        switch (id) {
-            case 0:
-                return MINUTES_3;
-            case 1:
-                return MINUTES_5;
-            case 2:
-                return MINUTES_10;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
+        if (id == MINUTES_3.id) {
+            return MINUTES_3;
         }
+
+        if (id == MINUTES_5.id) {
+            return MINUTES_5;
+        }
+
+        if (id == MINUTES_10.id) {
+            return MINUTES_10;
+        }
+
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the Duration enumeration value.
+     *
+     * @return The id of the Duration enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

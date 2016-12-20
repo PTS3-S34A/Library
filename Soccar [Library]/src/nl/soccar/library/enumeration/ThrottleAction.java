@@ -14,17 +14,8 @@ public enum ThrottleAction {
 
     private final int id;
 
-    private ThrottleAction(int id) {
+    ThrottleAction(int id) {
         this.id = id;
-    }
-
-    /**
-     * Gets the id of the ThrottleAction enumeration value.
-     *
-     * @return The id of the ThrottleAction enumeration value.
-     */
-    public int getId() {
-        return id;
     }
 
     /**
@@ -34,18 +25,31 @@ public enum ThrottleAction {
      * @return The ThrottleAction enumeration value based on the given id.
      */
     public static ThrottleAction parse(int id) {
-        switch (id) {
-            case 0:
-                return IDLE;
-            case 1:
-                return ACCELERATE;
-            case 2:
-                return REVERSE;
-            case 3:
-                return BOOST;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
+        if (id == IDLE.id) {
+            return IDLE;
         }
+
+        if (id == ACCELERATE.id) {
+            return ACCELERATE;
+        }
+
+        if (id == REVERSE.id) {
+            return REVERSE;
+        }
+
+        if (id == BOOST.id) {
+            return BOOST;
+        }
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the ThrottleAction enumeration value.
+     *
+     * @return The id of the ThrottleAction enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }
