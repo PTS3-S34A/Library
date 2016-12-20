@@ -56,7 +56,7 @@ public class Game {
         if (status != GameStatus.STOPPED) {
             return;
         }
-        
+
         events.clear();
 
         map.setMapType(settings.getMapType());
@@ -95,16 +95,12 @@ public class Game {
         }
     }
 
-    public void togglePause() {
+    public void setPaused(boolean paused) {
         if (status == GameStatus.STOPPED) {
             return;
         }
 
-        if (status == GameStatus.RUNNING || status == GameStatus.SCORED) {
-            status = GameStatus.PAUSED;
-        } else if (status == GameStatus.PAUSED) {
-            status = GameStatus.RUNNING;
-        }
+        status = paused ? GameStatus.PAUSED : GameStatus.RUNNING;
     }
 
     /**
