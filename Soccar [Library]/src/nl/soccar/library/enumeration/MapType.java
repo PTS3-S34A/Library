@@ -18,21 +18,11 @@ public enum MapType {
     }
 
     /**
-     * Gets the id of the MapType enumeration value.
-     *
-     * @return The id of the MapType enumeration value.
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
      * Gets the MapType enumeration value based on the given id.
      *
      * @param id The id of the MapType that needs to be retrieved.
      * @return The MapType enumeration value based on the given id.
      */
-
     public static MapType parse(int id) {
         if (id == GRASSLAND.id) {
             return GRASSLAND;
@@ -47,6 +37,15 @@ public enum MapType {
         }
 
         throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the MapType enumeration value.
+     *
+     * @return The id of the MapType enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

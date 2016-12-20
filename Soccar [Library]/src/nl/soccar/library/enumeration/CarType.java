@@ -18,21 +18,11 @@ public enum CarType {
     }
 
     /**
-     * Gets the id of the CarType enumeration value.
-     *
-     * @return The id of the CarType enumeration value.
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
      * Gets the CarType enumeration value based on the given id.
      *
      * @param id The id of the CarType that needs to be retrieved.
      * @return The CarType enumeration value based on the given id.
      */
-
     public static CarType parse(int id) {
         if (id == SPORTSCAR.id) {
             return SPORTSCAR;
@@ -47,6 +37,15 @@ public enum CarType {
         }
 
         throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the CarType enumeration value.
+     *
+     * @return The id of the CarType enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

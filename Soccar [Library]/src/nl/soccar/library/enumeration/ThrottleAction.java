@@ -19,15 +19,6 @@ public enum ThrottleAction {
     }
 
     /**
-     * Gets the id of the ThrottleAction enumeration value.
-     *
-     * @return The id of the ThrottleAction enumeration value.
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
      * Gets the ThrottleAction enumeration value based on the given id.
      *
      * @param id The id of the ThrottleAction that needs to be retrieved.
@@ -50,6 +41,15 @@ public enum ThrottleAction {
             return BOOST;
         }
         throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the ThrottleAction enumeration value.
+     *
+     * @return The id of the ThrottleAction enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

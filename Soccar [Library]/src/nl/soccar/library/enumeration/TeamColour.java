@@ -15,15 +15,6 @@ public enum TeamColour {
     TeamColour(int id) {
         this.id = id;
     }
-    
-    /**
-     * Gets the id of the TeamColour enumeration value.
-     *
-     * @return The id of the TeamColour enumeration value.
-     */
-    public int getId() {
-        return id;
-    }
 
     /**
      * Gets the TeamColour enumeration value based on the given id.
@@ -31,7 +22,6 @@ public enum TeamColour {
      * @param id The id of the TeamColour that needs to be retrieved.
      * @return The TeamColour enumeration value based on the given id.
      */
-
     public static TeamColour parse(int id) {
         if (id == BLUE.id) {
             return BLUE;
@@ -42,6 +32,15 @@ public enum TeamColour {
         }
 
         throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the TeamColour enumeration value.
+     *
+     * @return The id of the TeamColour enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }

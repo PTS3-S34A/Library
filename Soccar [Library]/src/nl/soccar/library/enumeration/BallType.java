@@ -16,15 +16,6 @@ public enum BallType {
     BallType(int id) {
         this.id = id;
     }
-    
-    /**
-     * Gets the id of the BallType enumeration value.
-     *
-     * @return The id of the BallType enumeration value.
-     */
-    public int getId() {
-        return id;
-    }
 
     /**
      * Gets the BallType enumeration value based on the given id.
@@ -32,7 +23,6 @@ public enum BallType {
      * @param id The id of the BallType that needs to be retrieved.
      * @return The BallType enumeration value based on the given id.
      */
-
     public static BallType parse(int id) {
         if (id == FOOTBALL.id) {
             return FOOTBALL;
@@ -47,6 +37,15 @@ public enum BallType {
         }
 
         throw new IllegalArgumentException("Invalid id.");
+    }
+
+    /**
+     * Gets the id of the BallType enumeration value.
+     *
+     * @return The id of the BallType enumeration value.
+     */
+    public int getId() {
+        return id;
     }
 
 }
