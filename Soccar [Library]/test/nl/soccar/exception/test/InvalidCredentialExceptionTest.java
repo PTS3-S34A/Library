@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * JUnit test that tests the nl.soccar.exception.InvalidCredentialExceptionTest
- class.
+ * JUnit test that tests the nl.soccar.exception.InvalidCredentialException
+ * class.
  *
  * @author PTS34A
  */

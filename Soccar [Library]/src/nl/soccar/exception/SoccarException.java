@@ -1,24 +1,26 @@
 package nl.soccar.exception;
 
+import java.io.Serializable;
+
 /**
- * UIException is the super-class wich the individual UI-Exception classes
- * extend.
+ * SoccarException is the super-class wich the individual SoccarException
+ * classes extend.
  *
  * @author PTS34A
  */
-public class UIException extends Exception {
+public class SoccarException extends Exception implements Serializable {
 
     private final String title;
 
     /**
-     * Initiates a new UIException object.
+     * Initiates a new SoccarException object.
      *
      * @param title The title for the exception, it will be used to display an
      * alert. The title shouldn't be null or empty.
      * @param message The exception-message, it will be used to display an
      * alert. The title shouldn't be null or empty.
      */
-    public UIException(String title, String message) {
+    public SoccarException(String title, String message) {
         super(message);
         this.title = title;
     }

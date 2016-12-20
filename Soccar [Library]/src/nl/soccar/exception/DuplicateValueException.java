@@ -6,7 +6,7 @@ package nl.soccar.exception;
  *
  * @author PTS34A
  */
-public class DuplicateValueException extends UIException {
+public class DuplicateValueException extends SoccarException {
 
     /**
      * Initiates a new DuplicateValueException object.
