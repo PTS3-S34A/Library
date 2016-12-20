@@ -6,7 +6,7 @@ package nl.soccar.exception;
  *
  * @author PTS34A
  */
-public class RoomException extends UIException {
+public class RoomException extends SoccarException {
 
     /**
      * Initiates a new RoomException object.
