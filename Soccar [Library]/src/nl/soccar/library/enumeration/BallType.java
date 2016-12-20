@@ -10,28 +10,30 @@ public enum BallType {
     FOOTBALL(0),
     PUCK(1),
     SNOWBALL(2);
-    
+
     private final int id;
 
-    private BallType(int id) {
+    BallType(int id) {
         this.id = id;
     }
-    
+
+    public static BallType parse(int id) {
+        if (id == FOOTBALL.id) {
+            return FOOTBALL;
+        }
+
+        if (id == PUCK.id) {
+            return PUCK;
+        }
+
+        if (id == SNOWBALL.id) {
+            return SNOWBALL;
+        }
+
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
     public int getId() {
         return id;
     }
-    
-    public static BallType parse(int id) {
-        switch (id) {
-            case 0:
-                return FOOTBALL;
-            case 1:
-                return PUCK;
-            case 2:
-                return SNOWBALL;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
-        }
-    }
-
 }

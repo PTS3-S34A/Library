@@ -9,26 +9,26 @@ public enum HandbrakeAction {
 
     ACTIVE(0),
     INACTIVE(1);
-    
+
     private final int id;
-    
-    private HandbrakeAction(int id) {
+
+    HandbrakeAction(int id) {
         this.id = id;
     }
-    
+
+    public static HandbrakeAction parse(int id) {
+        if (id == ACTIVE.id) {
+            return ACTIVE;
+        }
+
+        if (id == INACTIVE.id) {
+            return INACTIVE;
+        }
+
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
     public int getId() {
         return id;
     }
-    
-    public static HandbrakeAction parse(int id) {
-        switch (id) {
-            case 0:
-                return ACTIVE;
-            case 1:
-                return INACTIVE;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
-        }
-    }
-
 }

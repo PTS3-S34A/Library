@@ -2,11 +2,11 @@ package nl.soccar.library.enumeration;
 
 /**
  * Enumeration for the available throttle actions.
- * 
+ *
  * @author PTS34A
  */
 public enum ThrottleAction {
-    
+
     IDLE(0),
     ACCELERATE(1),
     REVERSE(2),
@@ -14,27 +14,30 @@ public enum ThrottleAction {
 
     private final int id;
 
-    private ThrottleAction(int id) {
+    ThrottleAction(int id) {
         this.id = id;
+    }
+
+    public static ThrottleAction parse(int id) {
+        if (id == IDLE.id) {
+            return IDLE;
+        }
+
+        if (id == ACCELERATE.id) {
+            return ACCELERATE;
+        }
+
+        if (id == REVERSE.id) {
+            return REVERSE;
+        }
+
+        if (id == BOOST.id) {
+            return BOOST;
+        }
+        throw new IllegalArgumentException("Invalid id.");
     }
 
     public int getId() {
         return id;
     }
-
-    public static ThrottleAction parse(int id) {
-        switch (id) {
-            case 0:
-                return IDLE;
-            case 1:
-                return ACCELERATE;
-            case 2:
-                return REVERSE;
-            case 3:
-                return BOOST;
-            default:
-                throw new IllegalArgumentException("Invalid id.");
-        }
-    }
-    
 }

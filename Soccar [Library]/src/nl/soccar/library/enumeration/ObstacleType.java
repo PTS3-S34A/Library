@@ -6,7 +6,25 @@ package nl.soccar.library.enumeration;
  * @author PTS34A
  */
 public enum ObstacleType {
-    
-    WALL
+
+    WALL(0);
+
+    private final int id;
+
+    ObstacleType(int id) {
+        this.id = id;
+    }
+
+    public static ObstacleType parse(int id) {
+        if (id == WALL.id) {
+            return WALL;
+        }
+
+        throw new IllegalArgumentException("Invalid id.");
+    }
+
+    public int getId() {
+        return id;
+    }
     
 }
