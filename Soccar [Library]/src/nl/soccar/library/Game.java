@@ -79,12 +79,20 @@ public class Game {
         status = GameStatus.STOPPED;
     }
 
+    /**
+     * Decreased the game time left by one. If the value is 0 or lower, it will stop the game.
+     */
     public void decreaseGameTime() {
         if (status == GameStatus.RUNNING && --timeLeft <= 0) {
             stop();
         }
     }
 
+    /**
+     * Sets the game time left. If the value is 0 or lower, it will stop the game.
+     *
+     * @param timeLeft The new time left for this game.
+     */
     public void setGameTime(int timeLeft) {
         if (status == GameStatus.RUNNING) {
             this.timeLeft = timeLeft;
@@ -95,6 +103,11 @@ public class Game {
         }
     }
 
+    /**
+     * Sets this game's Status to paused, given that its current Status is not STOPPED.
+     *
+     * @param paused
+     */
     public void setPaused(boolean paused) {
         if (status == GameStatus.STOPPED) {
             return;
