@@ -16,6 +16,22 @@ public enum Privilege {
     Privilege(int id) {
         this.id = id;
     }
+    
+    /**
+     * Gets the id of the Privilege enumeration value.
+     *
+     * @return The id of the Privilege enumeration value.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Gets the Privilege enumeration value based on the given id.
+     *
+     * @param id The id of the Privilege that needs to be retrieved.
+     * @return The Privilege enumeration value based on the given id.
+     */
 
     public static Privilege parse(int id) {
         if (id == GUEST.id) {
@@ -32,8 +48,5 @@ public enum Privilege {
 
         throw new IllegalArgumentException("Invalid id.");
     }
-
-    public int getId() {
-        return id;
-    }
+    
 }

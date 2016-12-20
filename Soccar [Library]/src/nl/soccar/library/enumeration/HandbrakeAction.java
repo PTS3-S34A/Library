@@ -16,6 +16,22 @@ public enum HandbrakeAction {
         this.id = id;
     }
 
+    /**
+     * Gets the id of the HandbrakeAction enumeration value.
+     *
+     * @return The id of the HandbrakeAction enumeration value.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Gets the HandbrakeAction enumeration value based on the given id.
+     *
+     * @param id The id of the HandbrakeAction that needs to be retrieved.
+     * @return The HandbrakeAction enumeration value based on the given id.
+     */
+
     public static HandbrakeAction parse(int id) {
         if (id == ACTIVE.id) {
             return ACTIVE;
@@ -28,7 +44,4 @@ public enum HandbrakeAction {
         throw new IllegalArgumentException("Invalid id.");
     }
 
-    public int getId() {
-        return id;
-    }
 }

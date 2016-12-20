@@ -16,6 +16,22 @@ public enum SteerAction {
     SteerAction(int id) {
         this.id = id;
     }
+    
+    /**
+     * Gets the id of the SteerAction enumeration value.
+     *
+     * @return The id of the SteerAction enumeration value.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Gets the SteerAction enumeration value based on the given id.
+     *
+     * @param id The id of the SteerAction that needs to be retrieved.
+     * @return The SteerAction enumeration value based on the given id.
+     */
 
     public static SteerAction parse(int id) {
         if (id == NONE.id) {
@@ -31,8 +47,5 @@ public enum SteerAction {
         }
         throw new IllegalArgumentException("Invalid id.");
     }
-
-    public int getId() {
-        return id;
-    }
+    
 }

@@ -17,6 +17,22 @@ public enum Duration {
         this.id = id;
     }
 
+    /**
+     * Gets the id of the Duration enumeration value.
+     *
+     * @return The id of the Duration enumeration value.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Gets the Duration enumeration value based on the given id.
+     *
+     * @param id The id of the Duration that needs to be retrieved.
+     * @return The Duration enumeration value based on the given id.
+     */
+
     public static Duration parse(int id) {
         if (id == MINUTES_3.id) {
             return MINUTES_3;
@@ -31,10 +47,6 @@ public enum Duration {
         }
 
         throw new IllegalArgumentException("Invalid id.");
-    }
-
-    public int getId() {
-        return id;
     }
 
 }
