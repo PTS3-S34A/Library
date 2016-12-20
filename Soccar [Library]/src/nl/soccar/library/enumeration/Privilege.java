@@ -17,10 +17,21 @@ public enum Privilege {
         this.id = id;
     }
     
+    /**
+     * Gets the id of the Privilege enumeration value.
+     *
+     * @return The id of the Privilege enumeration value.
+     */
     public int getId() {
         return id;
     }
-    
+
+    /**
+     * Gets the Privilege enumeration value based on the given id.
+     *
+     * @param id The id of the Privilege that needs to be retrieved.
+     * @return The Privilege enumeration value based on the given id.
+     */
     public static Privilege parse(int id) {
         switch (id) {
             case 0:
