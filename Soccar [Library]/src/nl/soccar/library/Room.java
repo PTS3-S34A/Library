@@ -21,6 +21,8 @@ public class Room {
 
     private final Team teamRed;
     private final Team teamBlue;
+    
+    private Player roomHost;
 
     /**
      * Constructor used for instantiation of a Room object.
@@ -58,14 +60,11 @@ public class Room {
      * Room first.
      */
     public Player getHost() {
-        Player player = null;
-        List<Player> allPlayers = getAllPlayers();
-
-        if (!allPlayers.isEmpty()) {
-            player = allPlayers.get(0);
-        }
-
-        return player;
+        return roomHost;
+    }
+    
+    public void setHost (Player roomHost) {
+        this.roomHost = roomHost;
     }
 
     /**

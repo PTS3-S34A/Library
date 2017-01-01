@@ -22,8 +22,8 @@ public class RoomTest {
 
     @Before
     public void setUp() {
-        room = new Room("name", "password");
         player = new Player("username", Privilege.NORMAL, CarType.CASUAL);
+        room = new Room("name", "password");
         room.getTeamBlue().join(player);
     }
 
@@ -77,7 +77,7 @@ public class RoomTest {
     public void getNameTest() {
         assertEquals("name", room.getName());
     }
-    
+
     /**
      * Test the getOccupancy method.
      */
