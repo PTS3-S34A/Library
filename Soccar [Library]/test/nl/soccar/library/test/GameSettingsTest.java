@@ -4,11 +4,8 @@ import nl.soccar.library.GameSettings;
 import nl.soccar.library.enumeration.BallType;
 import nl.soccar.library.enumeration.Duration;
 import nl.soccar.library.enumeration.MapType;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertEquals;
 
 /**

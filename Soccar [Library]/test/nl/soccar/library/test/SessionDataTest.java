@@ -43,8 +43,9 @@ public class SessionDataTest {
      * Tests the getHostName method.
      */
     @Test
-    public void getHostNameTest() {
-        assertEquals("hostName", sessionData.getHostName());
+    public void getHostNameAndSetHostNameTest() {
+        sessionData.setHostName("newHostName");
+        assertEquals("newHostName", sessionData.getHostName());
     }
 
     /**
