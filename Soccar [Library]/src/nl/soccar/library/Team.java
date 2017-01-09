@@ -31,7 +31,7 @@ public class Team {
      *
      * @param player The Player that needs to be added to this Team.
      */
-    public void join(Player player) {
+    public void join(Player player) {        
         players.add(player);
     }
 
