@@ -1,23 +1,24 @@
 package nl.soccar.library.enumeration.test;
 
-import nl.soccar.library.enumeration.BallType;
+import nl.soccar.library.enumeration.Duration;
+import nl.soccar.library.enumeration.ObstacleType;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
 /**
- * Tests the BallType enumeration.
+ * Tests the ObstacleType enumeration.
  *
  * @author PTS34A
  */
-public class BallTypeTest {
+public class ObstacleTypeTest {
 
     // Declaration of test object.
-    private BallType ballType;
+    private ObstacleType obstacleType;
 
     @Before
     public void setUp() {
-        ballType = BallType.FOOTBALL;
+        obstacleType = obstacleType.WALL;
     }
 
     /**
@@ -25,7 +26,7 @@ public class BallTypeTest {
      */
     @Test
     public void getIdTest() {
-        assertEquals(0, ballType.getId());
+        assertEquals(0, obstacleType.getId());
     }
 
     /**
@@ -33,9 +34,7 @@ public class BallTypeTest {
      */
     @Test
     public void parseTest() {
-        assertEquals(BallType.FOOTBALL, BallType.parse(0));
-        assertEquals(BallType.PUCK, BallType.parse(1));
-        assertEquals(BallType.SNOWBALL, BallType.parse(2));
+        assertEquals(obstacleType.WALL, obstacleType.parse(0));
     }
 
     /**
@@ -44,7 +43,7 @@ public class BallTypeTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void parseIllegalArgumentExceptionTest() {
-        BallType.parse(10);
+        ObstacleType.parse(10);
     }
 
 }
