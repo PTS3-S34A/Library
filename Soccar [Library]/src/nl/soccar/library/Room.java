@@ -21,7 +21,7 @@ public class Room {
 
     private final Team teamRed;
     private final Team teamBlue;
-    
+
     private Player roomHost;
 
     /**
@@ -62,8 +62,13 @@ public class Room {
     public Player getHost() {
         return roomHost;
     }
-    
-    public void setHost (Player roomHost) {
+
+    /**
+     * Sets the host of this Room.
+     *
+     * @param roomHost The new host of this room.
+     */
+    public void setHost(Player roomHost) {
         this.roomHost = roomHost;
     }
 
