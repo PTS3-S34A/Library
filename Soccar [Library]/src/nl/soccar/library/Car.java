@@ -18,19 +18,19 @@ public class Car extends Entity {
      */
     public static final float CAR_WIDTH = 3.0F;
 
+    public static final float DEFAULT_BOOST_AMOUNT = 100;
+
     private final float width;
     private final float height;
 
     private final float wheelWidth;
     private final float wheelHeight;
-
+    private final Player player;
     private SteerAction steerAction;
     private ThrottleAction throttleAction;
     private HandbrakeAction handbrakeAction;
-
     private float boostAmount;
     private CarType type;
-    private final Player player;
 
     /**
      * Constructor used to instantiate a new Car object. Booster will be set to
@@ -60,7 +60,7 @@ public class Car extends Entity {
         this.type = type;
         this.player = player;
 
-        boostAmount = 100;
+        boostAmount = DEFAULT_BOOST_AMOUNT;
 
         steerAction = SteerAction.NONE;
         throttleAction = ThrottleAction.IDLE;
@@ -140,6 +140,15 @@ public class Car extends Entity {
     }
 
     /**
+     * Gets the current SteerAction of this Car.
+     *
+     * @return The SteerAction of this Car.
+     */
+    public SteerAction getSteerAction() {
+        return steerAction;
+    }
+
+    /**
      * Sets the current SteerAction of this Car. This way the engine can
      * determine what actions a Car should perform.
      *
@@ -150,12 +159,12 @@ public class Car extends Entity {
     }
 
     /**
-     * Gets the current SteerAction of this Car.
+     * Gets the current ThrottleAction of this Car.
      *
-     * @return The SteerAction of this Car.
+     * @return The ThrottleAction of this Car.
      */
-    public SteerAction getSteerAction() {
-        return steerAction;
+    public ThrottleAction getThrottleAction() {
+        return throttleAction;
     }
 
     /**
@@ -169,12 +178,12 @@ public class Car extends Entity {
     }
 
     /**
-     * Gets the current ThrottleAction of this Car.
+     * Gets the current HandbrakeAction of this Car.
      *
-     * @return The ThrottleAction of this Car.
+     * @return The HandbrakeAction of this Car.
      */
-    public ThrottleAction getThrottleAction() {
-        return throttleAction;
+    public HandbrakeAction getHandbrakeAction() {
+        return handbrakeAction;
     }
 
     /**
@@ -185,15 +194,6 @@ public class Car extends Entity {
      */
     public void setHandbrakeAction(HandbrakeAction handbrakeAction) {
         this.handbrakeAction = handbrakeAction;
-    }
-
-    /**
-     * Gets the current HandbrakeAction of this Car.
-     *
-     * @return The HandbrakeAction of this Car.
-     */
-    public HandbrakeAction getHandbrakeAction() {
-        return handbrakeAction;
     }
 
 }
