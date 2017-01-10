@@ -155,7 +155,7 @@ public class Game {
      * @param event The Event that was triggered during this Game.
      */
     public void addEvent(Event event) {
-        events.add(event);
+        events.add(0, event);
     }
 
     /**

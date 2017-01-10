@@ -168,7 +168,7 @@ public class GameTest {
         assertEquals(eventGoalRed, game.getLastGoalEvent());
 
         game.addEvent(eventGoalBlue);
-        assertSame(eventGoalBlue, game.getLastGoalEvent());
+        assertEquals(eventGoalBlue, game.getLastGoalEvent());
     }
 
     /**
