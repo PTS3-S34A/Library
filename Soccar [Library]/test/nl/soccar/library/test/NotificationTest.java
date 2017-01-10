@@ -79,6 +79,14 @@ public class NotificationTest {
         notification.setPlayer(player);
         assertEquals(player, notification.getPlayer());
     }
+    
+    /**
+     * Tests the getTextColor method.
+     */
+    @Test
+    public void getTextColorTest() {
+        assertEquals(Color.WHITE, notification.getTextColor());
+    }
 
     /**
      * Tests the setDisplayTime and isActive methods.

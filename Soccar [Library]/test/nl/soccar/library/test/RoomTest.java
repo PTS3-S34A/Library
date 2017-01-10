@@ -1,5 +1,7 @@
 package nl.soccar.library.test;
 
+import java.util.ArrayList;
+import java.util.List;
 import nl.soccar.library.Player;
 import nl.soccar.library.Room;
 import nl.soccar.library.enumeration.CarType;
@@ -40,10 +42,9 @@ public class RoomTest {
      * Tests get getHost method.
      */
     @Test
-    public void getHostTest() {
+    public void getHostAndSetHostTest() {
+        room.setHost(player);
         assertEquals(player, room.getHost());
-        room.getTeamBlue().leave(player);
-        assertNull(room.getHost());
     }
 
     /**
@@ -67,7 +68,10 @@ public class RoomTest {
      */
     @Test
     public void getAllPlayersTest() {
-        assertEquals(1, room.getOccupancy());
+        List<Player> players = new ArrayList<>();
+        players.addAll(room.getTeamRed().getPlayers());
+        players.addAll(room.getTeamBlue().getPlayers());
+        assertEquals(players, room.getAllPlayers());
     }
 
     /**

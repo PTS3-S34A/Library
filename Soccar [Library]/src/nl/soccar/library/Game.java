@@ -155,7 +155,7 @@ public class Game {
      * @param event The Event that was triggered during this Game.
      */
     public void addEvent(Event event) {
-        events.add(event);
+        events.add(0, event);
     }
 
     /**
@@ -215,10 +215,9 @@ public class Game {
                 return 180;
             case MINUTES_5:
                 return 300;
+            default:
             case MINUTES_10:
                 return 600;
-            default:
-                throw new UnsupportedOperationException("Invalid duration.");
         }
     }
 

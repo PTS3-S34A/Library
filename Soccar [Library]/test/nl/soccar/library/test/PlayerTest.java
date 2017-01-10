@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * @author PTS34A
  */
 public class PlayerTest {
-    
+
     // Declaration of test objects.
     private Player player;
     private Statistics statistics;
@@ -30,7 +30,7 @@ public class PlayerTest {
         statistics = new Statistics("username", 0, 0, 0, 0, 0);
         session = new Session("name", "password");
     }
-    
+
     /**
      * Tests the getUsername method.
      */
@@ -38,7 +38,7 @@ public class PlayerTest {
     public void getUsernameTest() {
         assertEquals("username", player.getUsername());
     }
-    
+
     /**
      * Tests the getPrivilege method.
      */
@@ -46,7 +46,7 @@ public class PlayerTest {
     public void getPrivilegeTest() {
         assertEquals(Privilege.NORMAL, player.getPrivilege());
     }
-    
+
     /**
      * Tests the getCarType method.
      */
@@ -54,7 +54,7 @@ public class PlayerTest {
     public void getCarTypeTest() {
         assertEquals(CarType.CASUAL, player.getCarType());
     }
-    
+
     /**
      * Tests the getStatistics and setStatistics methods.
      */
@@ -63,7 +63,7 @@ public class PlayerTest {
         player.setStatistics(statistics);
         assertEquals(statistics, player.getStatistics());
     }
-    
+
     /**
      * Tests the getCurrentSession and setCurrentSession methods.
      */
@@ -72,7 +72,34 @@ public class PlayerTest {
         player.setCurrentSession(session);
         assertEquals(session, player.getCurrentSession());
     }
-    
+
+    /**
+     * Tests the getPlayedId method.
+     */
+    @Test
+    public void getPlayedIdAndSetPlayerIdTest() {
+        player.setPlayerId(1);
+        assertEquals(1, player.getPlayerId());
+    }
+
+    /**
+     * Tests the hashCode method.
+     */
+    @Test
+    public void hashCodeTest() {
+        assertEquals(17 * 31 + player.getUsername().hashCode(), player.hashCode());
+    }
+
+    /**
+     * Tests the equals method.
+     */
+    @Test
+    public void equalsTest() {
+        assertTrue(player.equals(player));
+        assertFalse(player.equals(null));
+        assertFalse(player.equals(new Object()));
+    }
+
     /**
      * Tests the toString method
      */

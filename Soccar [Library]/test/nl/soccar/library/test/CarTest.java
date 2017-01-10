@@ -100,7 +100,7 @@ public class CarTest {
      */
     @Test
     public void getWheelHeightTest() {
-        assertEquals(Math.round(car.getWheelWidth() * 2.0F), Math.round(car.getWheelWidth()));
+        assertEquals(Math.round(car.getWheelWidth()* 2.0F), Math.round(car.getWheelHeight()));
     }
 
     /**
