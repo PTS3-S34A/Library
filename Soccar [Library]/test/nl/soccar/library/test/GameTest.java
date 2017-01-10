@@ -163,6 +163,9 @@ public class GameTest {
     @Test
     public void getLastGoalEvent() {
         assertNull(game.getLastGoalEvent());
+        
+        game.addEvent(new Event(EventType.ASSIST, LocalTime.MIN, player));
+        assertNull(game.getLastGoalEvent());
 
         game.addEvent(eventGoalRed);
         assertEquals(eventGoalRed, game.getLastGoalEvent());
