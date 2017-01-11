@@ -1,9 +1,10 @@
 package nl.soccar.library;
 
-import java.util.ArrayList;
-import java.util.List;
 import javafx.scene.shape.Rectangle;
 import nl.soccar.library.enumeration.MapType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A Map keeps track of Cars and a Ball. Furthermore it specifies its size and
@@ -17,10 +18,9 @@ public class Map {
     private final Rectangle size;
     private final Rectangle goalBlue;
     private final Rectangle goalRed;
-    private MapType type;
-
     private final List<Car> cars;
     private final Ball ball;
+    private MapType type;
 
     /**
      * Constructor used to instantiate a new Map object. By default it sets the
@@ -50,6 +50,10 @@ public class Map {
      */
     public void addCar(Car car) {
         cars.add(car);
+    }
+
+    public void removeCars() {
+        cars.clear();
     }
 
     /**
