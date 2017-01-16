@@ -1,5 +1,6 @@
 package nl.soccar.library.test;
 
+import java.util.NoSuchElementException;
 import javafx.scene.shape.Rectangle;
 import nl.soccar.library.Ball;
 import nl.soccar.library.Car;
@@ -48,6 +49,16 @@ public class MapTest {
     public void addCarAndGetCarFromPlayerTest() {
         map.addCar(car);
         assertEquals(car, map.getCarFromPlayer(player));
+    }
+
+    /**
+     * Tests the removeCars method.
+     */
+    @Test(expected = NoSuchElementException.class)
+    public void removeCarsTest() {
+        map.addCar(car);
+        map.removeCars();
+        map.getCarFromPlayer(player);
     }
 
     /**
