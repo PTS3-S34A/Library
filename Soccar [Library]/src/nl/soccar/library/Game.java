@@ -61,10 +61,6 @@ public class Game {
 
         map.setMapType(settings.getMapType());
 
-        Ball ball = map.getBall();
-        ball.setBallType(settings.getBallType());
-        ball.move(MapConstants.MAP_WIDTH / 2, MapConstants.MAP_HEIGHT / 2, 0);
-
         timeLeft = getDurationInSeconds();
         status = GameStatus.PAUSED;
     }
@@ -80,6 +76,10 @@ public class Game {
 
         timeLeft = 0;
         status = GameStatus.STOPPED;
+
+        Ball ball = map.getBall();
+        ball.setBallType(settings.getBallType());
+        ball.move(MapConstants.MAP_WIDTH / 2, MapConstants.MAP_HEIGHT / 2, 0);
     }
 
     /**
@@ -215,7 +215,7 @@ public class Game {
     private int getDurationInSeconds() {
         switch (settings.getDuration()) {
             case MINUTES_3:
-                return 180;
+                return 10;
             case MINUTES_5:
                 return 300;
             default:
