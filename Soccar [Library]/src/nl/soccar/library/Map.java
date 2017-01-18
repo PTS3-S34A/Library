@@ -52,6 +52,9 @@ public class Map {
         cars.add(car);
     }
 
+    /**
+     * Removes all cars from the Map.
+     */
     public void removeCars() {
         cars.clear();
     }
